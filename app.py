@@ -45,7 +45,18 @@ def read():
 
     return "Value is "+str(v)
 
+@app.route("/delete", methods=["GET", "POST"])
+def delete():
+    k = str(request.form.get("key"))
+    cur = db.find({"key": k})
+    if cur.count() == 0:
+        return "Key not found"
+    
+    db.delete_one({"key": k})
 
+    return "Key deleted successfully"
+
+  
 
 if __name__ == "__main__":
     app.run(debug=True)

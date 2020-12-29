@@ -158,7 +158,24 @@
 					</form>
 				  </div>
 				  
+				  <div id="Delete" class="tabcontent">
+					<form action="/delete" method="post">
+						{% if msg2 %}
+						<span class="s"><p>{{ msg2 }}</p></span> 
+						{% endif %}
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-key"></i></span>
+								<input type="text" class="form-control" name="key" placeholder="Key to search" maxlength="32"  required="required">
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block btn-lg" >Delete</button>
+						</div>
+					</form>
+				  </div>
 				  
+				
 			</div>
 			<script>
 				function openCity(evt, cityName) {
