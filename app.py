@@ -56,7 +56,19 @@ def delete():
 
     return "Key deleted successfully"
 
+@app.route("/download", methods=["GET", "POST"])
+def download():
+    cur = db.find({}, {"_id":0})
+    f = 'data.json'
+    list_cur = list(cur) 
   
+    json_data = dumps(list_cur, indent = 4)  
+
+    with open('data.json', 'w') as file: 
+        file.write(json_data) 
+    
+    return send_file(Path('data.json'), attachment_filename=f, as_attachment=True)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
