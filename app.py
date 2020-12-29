@@ -60,6 +60,7 @@ def delete():
 def download():
     cur = db.find({}, {"_id":0})
     f = 'data.json'
+    
     list_cur = list(cur) 
   
     json_data = dumps(list_cur, indent = 4)  
