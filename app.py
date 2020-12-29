@@ -32,6 +32,19 @@ def create():
 
     return "Wrong file format"
 
+@app.route("/read", methods=["GET", "POST"])
+def read():
+    k = str(request.form.get("key"))
+    v = None 
+    cur = db.find({"key": k})
+    if cur.count() == 0:
+        return "Key not found"
+    
+    for x in cur:
+        v = x['value']
+
+    return "Value is "+str(v)
+
 
 
 if __name__ == "__main__":
